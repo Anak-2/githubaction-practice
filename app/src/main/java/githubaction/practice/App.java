@@ -9,7 +9,7 @@ public class App {
     }
 
     public String testMethod(){
-        return "test completed";
+        return "test run";
     }
 
     public static void main(String[] args) {
