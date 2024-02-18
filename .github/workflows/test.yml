@@ -1,41 +1,41 @@
 name: TEST
 
 on:
-    pull_request:
-        branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-java@v3
-              with:
-                  distribution: "zulu"
-                  java-version: "17"
-            - name: Grant execute permission for gradlew
-              run: chmod +x gradlew
-            - name: Test with Gradle
-              run: ./gradlew test
-            - name: If Test fail
-              if: ${{ failure() }}
-              uses: actions/github-script@v6
-              with:
-                  github-token: ${{secrets.GITHUB_TOKEN}}
-                  script: |
-                      const pull_number = ${{ github.event.pull_request.number }}
-                      const updated_title = `[BUILD FAIL] ${{ github.event.pull_request.title }}`
-                      await github.rest.pulls.createReview({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
-                        pull_number: pull_number,
-                        body: '빌드에 실패했습니다.',
-                        event: 'REQUEST_CHANGES'
-                      })
-                      await github.rest.pulls.update({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
-                        pull_number: pull_number,
-                        title: updated_title,
-                        state: 'closed'
-                      })
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "17"
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Test with Gradle
+        run: ./gradlew test
+      - name: If Test fail
+        if: ${{ failure() }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const pull_number = ${{ github.event.pull_request.number }}
+            const updated_title = `[BUILD FAIL] ${{ github.event.pull_request.title }}`
+            await github.rest.pulls.createReview({
+              owner: github.context.repo.owner,
+              repo: github.context.repo.repo,
+              pull_number: pull_number,
+              body: '빌드에 실패했습니다.',
+              event: 'REQUEST_CHANGES'
+            })
+            await github.rest.pulls.update({
+              owner: github.context.repo.owner,
+              repo: github.context.repo.repo,
+              pull_number: pull_number,
+              title: updated_title,
+              state: 'closed'
+            })
