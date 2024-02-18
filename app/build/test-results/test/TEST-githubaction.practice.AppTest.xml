@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="githubaction.practice.AppTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-02-16T08:45:48" hostname="CP-231229-38" time="0.009">
-  <properties/>
-  <testcase name="appHasAGreeting()" classname="githubaction.practice.AppTest" time="0.009"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
