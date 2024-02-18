@@ -28,4 +28,10 @@ class AppTest {
             throw new Exception("테스트 실패");
         });
     }
+
+    @DisplayName("테스트 실패")
+    @Test
+    void testFail_real() throws Exception{
+        throw new Exception("테스트 실패");
+    }
 }
