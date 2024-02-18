@@ -33,3 +33,8 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+// plain jar 생략
+jar {
+    enabled = false
+}
