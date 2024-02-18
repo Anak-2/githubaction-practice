@@ -11,16 +11,21 @@ import org.junit.jupiter.api.DisplayName;
 class AppTest {
     App classUnderTest = new App();
 
-    @Test void appHasAGreeting() {
+    @Test
+    void appHasAGreeting() {
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 
-    @Test void appTesting(){
+    @Test
+    void appTesting() {
         assertNotNull(classUnderTest.testMethod(), "app should pass the test");
     }
 
     @DisplayName("테스트 실패")
-    @Test void testFail() throws Exception{
-        throw new Exception("테스트 실패");
+    @Test
+    void testFail() {
+        assertThrows(Exception.class, () -> {
+            throw new Exception("테스트 실패");
+        });
     }
 }
