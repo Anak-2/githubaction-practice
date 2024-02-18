@@ -8,6 +8,10 @@ public class App {
         return "Hello World!";
     }
 
+    public String testMethod(){
+        return "test completed";
+    }
+
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
     }
