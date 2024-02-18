@@ -9,7 +9,7 @@ public class App {
     }
 
     public String testMethod(){
-        return "test run";
+        return "풀리퀘 실험";
     }
 
     public static void main(String[] args) {
