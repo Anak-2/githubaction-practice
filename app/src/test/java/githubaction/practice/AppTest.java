@@ -6,6 +6,8 @@ package githubaction.practice;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
+
 class AppTest {
     App classUnderTest = new App();
 
@@ -15,5 +17,10 @@ class AppTest {
 
     @Test void appTesting(){
         assertNotNull(classUnderTest.testMethod(), "app should pass the test");
+    }
+
+    @DisplayName("테스트 실패")
+    @Test void testFail() throws Exception{
+        throw new Exception("테스트 실패");
     }
 }
