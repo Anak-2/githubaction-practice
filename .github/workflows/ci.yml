@@ -18,5 +18,5 @@ jobs:
             - name: Upload jar file
               uses: actions/upload-artifact@v4
               with:
-                  name: Build
-                  path: build/libs
+                  path: ${{ github.workspace }}/Artifacts
+                  name: ${{ github.run_number }}
