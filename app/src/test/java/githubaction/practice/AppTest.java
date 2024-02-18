@@ -6,9 +6,26 @@ package githubaction.practice;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
+
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
+    App classUnderTest = new App();
+
+    @Test
+    void appHasAGreeting() {
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    }
+
+    @Test
+    void appTesting() {
+        assertNotNull(classUnderTest.testMethod(), "app should pass the test");
+    }
+
+    @DisplayName("테스트 실패")
+    @Test
+    void testFail() {
+        assertThrows(Exception.class, () -> {
+            throw new Exception("테스트 실패");
+        });
     }
 }
