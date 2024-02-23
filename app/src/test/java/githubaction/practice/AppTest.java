@@ -28,4 +28,10 @@ class AppTest {
             throw new Exception("테스트 실패");
         });
     }
+
+    @DisplayName("테스트 일부러 실패")
+    @Test
+    void testFailTwo() throws Exception{
+        throw new Exception();
+    }
 }
